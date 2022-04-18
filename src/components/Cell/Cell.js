@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { FormControl } from 'react-bootstrap';
 
-function Cell() {
+function Cell({ id }) {
   const [cellValue, setCellValue] = useState('');
 
   const onChange = (event) => {
@@ -18,7 +19,7 @@ function Cell() {
 
   return (
     <FormControl
-      // id={id}
+      id={id}
       className="cell"
       type="text"
       value={cellValue}
@@ -27,5 +28,12 @@ function Cell() {
     />
   );
 }
+
+Cell.propTypes = {
+  id: PropTypes.string.isRequired,
+};
+
+Cell.defaultProps = {
+};
 
 export default React.memo(Cell);

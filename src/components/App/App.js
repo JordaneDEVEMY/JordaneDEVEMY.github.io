@@ -1,10 +1,15 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+
+import Board from '../Board/Board';
+// import Cell from '../Cell/Cell';
 
 function App() {
   return (
-    <div className="App">
+    <Container className="text-center" id="App">
       <h1>Technical Test in Progress</h1>
-    </div>
+      <Board />
+    </Container>
   );
 }
 
