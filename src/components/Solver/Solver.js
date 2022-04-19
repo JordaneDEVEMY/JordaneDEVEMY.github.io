@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Board from '../Board/Board';
 import ButtonsGroup from '../ButtonsGroup/ButtonsGroup';
 import { EMPTY_GRID, EMPTY_START_GRID, GET_RANDOM_BOARD } from '../../config/constants';
+import solveSudoku from '../../utils/solvingAlgorithm';
 
 function Solver() {
   const [grid, setGrid] = useState(EMPTY_GRID);
@@ -49,15 +50,28 @@ function Solver() {
     localStorage.setItem('sudoku-board', JSON.stringify(randomGrid));
   };
 
+  const handleSolveButtonClicked = () => {
+    setStartGrid(grid.map((arr) => arr.slice()));
+    const progress = solveSudoku(grid);
+    console.log('file: Solver.js ~ line 57 ~ handleSolveButtonClicked ~ solveSudoku(grid)', solveSudoku(grid));
+    setGrid(progress);
+    console.log('file: Solver.js ~ line 65 ~ handleSolveButtonClicked ~ grid', grid);
+  };
+
   return (
     <>
       <br />
       <Board
+        startGrid={startGrid}
         onChange={handleValueChange}
         grid={grid}
       />
       <br />
-      <ButtonsGroup reset={reset} boardExample={boardExample} />
+      <ButtonsGroup
+        reset={reset}
+        boardExample={boardExample}
+        handleSolveButtonClicked={handleSolveButtonClicked}
+      />
     </>
   );
 }
