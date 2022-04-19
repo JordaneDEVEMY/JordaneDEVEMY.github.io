@@ -8,7 +8,7 @@ import Solver from '../Solver/Solver';
 function App() {
   return (
     <Container className="text-center" id="App">
-      <h1>Technical Test in Progress</h1>
+      <h1>[TT] Sudoku Solver</h1>
       <Solver />
     </Container>
   );
