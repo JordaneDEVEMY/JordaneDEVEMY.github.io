@@ -9,6 +9,7 @@ import solveSudoku from '../../utils/solvingAlgorithm';
 function Solver() {
   const [grid, setGrid] = useState(EMPTY_GRID);
   const [startGrid, setStartGrid] = useState(EMPTY_START_GRID);
+  const [isSolved, setIsSolved] = useState(false);
 
   const handleValueChange = (e, id) => {
     const { value } = e.target;
@@ -42,6 +43,7 @@ function Solver() {
     setGrid(EMPTY_GRID);
     setStartGrid(EMPTY_START_GRID);
     localStorage.setItem('sudoku-board', JSON.stringify(EMPTY_GRID()));
+    setIsSolved(false);
   };
 
   const boardExample = () => {
@@ -56,6 +58,13 @@ function Solver() {
     console.log('file: Solver.js ~ line 57 ~ handleSolveButtonClicked ~ solveSudoku(grid)', solveSudoku(grid));
     setGrid(progress);
     console.log('file: Solver.js ~ line 65 ~ handleSolveButtonClicked ~ grid', grid);
+    setIsSolved(true);
+  };
+
+  const undo = () => {
+    setGrid(startGrid);
+    setStartGrid(EMPTY_START_GRID);
+    setIsSolved(false);
   };
 
   return (
@@ -71,6 +80,8 @@ function Solver() {
         reset={reset}
         boardExample={boardExample}
         handleSolveButtonClicked={handleSolveButtonClicked}
+        disabled={!isSolved}
+        undo={undo}
       />
     </>
   );
