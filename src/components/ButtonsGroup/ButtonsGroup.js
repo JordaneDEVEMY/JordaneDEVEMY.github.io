@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-function ButtonsGroup({ reset, boardExample, handleSolveButtonClicked }) {
+function ButtonsGroup({
+  reset,
+  boardExample,
+  handleSolveButtonClicked,
+  undo,
+  disabled,
+}) {
   return (
     <ButtonGroup className="shadow">
       <Button
@@ -36,8 +42,9 @@ function ButtonsGroup({ reset, boardExample, handleSolveButtonClicked }) {
       <Button
         variant="outline-dark"
         size="sm"
+        disabled={disabled}
         onClick={() => {
-          console.log('file: ButtonsGroup.js ~ Undo ~ onClick');
+          undo();
         }}
       >
         Undo
@@ -50,6 +57,8 @@ ButtonsGroup.propTypes = {
   reset: PropTypes.func.isRequired,
   boardExample: PropTypes.func.isRequired,
   handleSolveButtonClicked: PropTypes.func.isRequired,
+  undo: PropTypes.func.isRequired,
+  disabled: PropTypes.bool.isRequired,
 };
 
 ButtonsGroup.defaultProps = {
