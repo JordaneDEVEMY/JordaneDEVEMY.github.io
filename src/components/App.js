@@ -1,8 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
 
-// import Board from '../Board/Board';
-// import Cell from '../Cell/Cell';
 import Solver from './Solver';
 
 function App() {
