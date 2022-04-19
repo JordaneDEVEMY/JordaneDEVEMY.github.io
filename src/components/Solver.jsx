@@ -48,9 +48,7 @@ function Solver() {
   const handleSolveButtonClicked = () => {
     setStartGrid(grid.map((arr) => arr.slice()));
     const progress = solveSudoku(grid);
-    console.log('file: Solver.js ~ line 57 ~ handleSolveButtonClicked ~ solveSudoku(grid)', solveSudoku(grid));
     setGrid(progress);
-    console.log('file: Solver.js ~ line 65 ~ handleSolveButtonClicked ~ grid', grid);
     setIsSolved(true);
   };
 
