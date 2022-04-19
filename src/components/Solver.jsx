@@ -15,7 +15,6 @@ function Solver() {
     const { value } = e.target;
     if ((value <= 9 && value > 0) || value === '') {
       const position = id.split(',');
-      // ? console.log('file: Solver.js ~ line 15 ~ handleValueChange ~ position', position);
 
       // Creating a shallow copy of the grid
       const newGrid = grid.map((arr) => arr.slice());
@@ -26,17 +25,11 @@ function Solver() {
         newGrid[position[0]][position[1]] = Number(value);
       }
 
-      // ? console.log('file: SudokuSolver.jsx ~ line 25 ~ handleValueChange ~ newGrid', newGrid);
-
       setGrid(newGrid);
 
       // update localStorage
       localStorage.setItem('sudoku-board', JSON.stringify(newGrid));
     }
-
-    // eslint-disable-next-line max-len
-    // ? console.log('file: Solver.js ~ line 34 ~ handleValueChange ~ localStorage[\'sudoku-board\']');
-    // ? console.table(localStorage['sudoku-board']);
   };
 
   const reset = () => {
