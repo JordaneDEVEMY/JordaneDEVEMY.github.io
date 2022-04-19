@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Cell from '../Cell/Cell';
-import { COLUMN_SIZE, ROW_SIZE } from '../../config/constants';
+import Cell from './Cell';
+import { COLUMN_SIZE, ROW_SIZE } from '../config/constants';
 
 function Board({ onChange, grid }) {
   const cells = [];
