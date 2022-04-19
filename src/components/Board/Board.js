@@ -1,23 +1,22 @@
 import React from 'react';
-import Cell from '../Cell/Cell';
+import PropTypes from 'prop-types';
 
-function Board() {
+import Cell from '../Cell/Cell';
+import { COLUMN_SIZE, ROW_SIZE } from '../../config/constants';
+
+function Board({ onChange, grid }) {
   const cells = [];
-  console.log('file: Board.js ~ line 6 ~ Board ~ cells', cells);
 
   const renderCells = () => {
-    const boardSize = {
-      row: 9,
-      columns: 9,
-    };
-
-    for (let i = 0; i < boardSize.row; i += 1) {
-      for (let j = 0; j < boardSize.columns; j += 1) {
+    for (let i = 0; i < ROW_SIZE; i += 1) {
+      for (let j = 0; j < COLUMN_SIZE; j += 1) {
         const index = `${i},${j}`;
         cells.push(
           <Cell
             key={index}
             id={index}
+            onChange={onChange}
+            value={grid[i][j] === 0 ? '' : grid[i][j]}
           />,
         );
       }
@@ -28,5 +27,13 @@ function Board() {
 
   return <div className="sudoku-grid shadow">{renderCells()}</div>;
 }
+
+Board.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  grid: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+};
+
+Board.defaultProps = {
+};
 
 export default React.memo(Board);
