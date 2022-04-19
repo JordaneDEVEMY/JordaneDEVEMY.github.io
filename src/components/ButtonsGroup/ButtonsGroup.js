@@ -9,7 +9,6 @@ function ButtonsGroup({ reset, boardExample }) {
         variant="outline-dark"
         size="sm"
         onClick={() => {
-          console.log('file: ButtonsGroup.js ~ Example Board ~ onClick');
           reset();
           boardExample();
         }}
@@ -29,7 +28,7 @@ function ButtonsGroup({ reset, boardExample }) {
         variant="outline-dark"
         size="sm"
         onClick={() => {
-          console.log('file: ButtonsGroup.js ~ Clear ~ onClick');
+          reset();
         }}
       >
         Clear
