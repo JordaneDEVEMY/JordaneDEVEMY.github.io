@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
-import Board from '../Board/Board';
-import ButtonsGroup from '../ButtonsGroup/ButtonsGroup';
-import { EMPTY_GRID, EMPTY_START_GRID, GET_RANDOM_BOARD } from '../../config/constants';
-import solveSudoku from '../../utils/solvingAlgorithm';
+import Board from './Board';
+import ButtonsGroup from './ButtonsGroup';
+import { EMPTY_GRID, EMPTY_START_GRID, GET_RANDOM_BOARD } from '../config/constants';
+import solveSudoku from '../utils/solvingAlgorithm';
 
 function Solver() {
   const [grid, setGrid] = useState(EMPTY_GRID);
