@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-function ButtonsGroup({ reset, boardExample }) {
+function ButtonsGroup({ reset, boardExample, handleSolveButtonClicked }) {
   return (
     <ButtonGroup className="shadow">
       <Button
@@ -19,7 +19,7 @@ function ButtonsGroup({ reset, boardExample }) {
         variant="outline-dark"
         size="sm"
         onClick={() => {
-          console.log('file: ButtonsGroup.js ~ Solve ~ onClick');
+          handleSolveButtonClicked();
         }}
       >
         Solve
@@ -49,6 +49,7 @@ function ButtonsGroup({ reset, boardExample }) {
 ButtonsGroup.propTypes = {
   reset: PropTypes.func.isRequired,
   boardExample: PropTypes.func.isRequired,
+  handleSolveButtonClicked: PropTypes.func.isRequired,
 };
 
 ButtonsGroup.defaultProps = {
