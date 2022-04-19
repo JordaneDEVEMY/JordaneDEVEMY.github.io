@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, ButtonGroup } from 'react-bootstrap';
 
-function ButtonsGroup() {
+function ButtonsGroup({ reset, boardExample }) {
   return (
     <ButtonGroup className="shadow">
       <Button
@@ -9,6 +10,8 @@ function ButtonsGroup() {
         size="sm"
         onClick={() => {
           console.log('file: ButtonsGroup.js ~ Example Board ~ onClick');
+          reset();
+          boardExample();
         }}
       >
         Example Board
@@ -43,5 +46,13 @@ function ButtonsGroup() {
     </ButtonGroup>
   );
 }
+
+ButtonsGroup.propTypes = {
+  reset: PropTypes.func.isRequired,
+  boardExample: PropTypes.func.isRequired,
+};
+
+ButtonsGroup.defaultProps = {
+};
 
 export default React.memo(ButtonsGroup);

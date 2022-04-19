@@ -1,11 +1,13 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 
 import Board from '../Board/Board';
 import ButtonsGroup from '../ButtonsGroup/ButtonsGroup';
-import { EMPTY_GRID } from '../../config/constants';
+import { EMPTY_GRID, EMPTY_START_GRID, GET_RANDOM_BOARD } from '../../config/constants';
 
 function Solver() {
   const [grid, setGrid] = useState(EMPTY_GRID);
+  const [startGrid, setStartGrid] = useState(EMPTY_START_GRID);
 
   const handleValueChange = (e, id) => {
     const { value } = e.target;
@@ -30,8 +32,21 @@ function Solver() {
       localStorage.setItem('sudoku-board', JSON.stringify(newGrid));
     }
 
-    console.log('file: Solver.js ~ line 34 ~ handleValueChange ~ localStorage[\'sudoku-board\']');
-    console.table(localStorage['sudoku-board']);
+    // eslint-disable-next-line max-len
+    // ? console.log('file: Solver.js ~ line 34 ~ handleValueChange ~ localStorage[\'sudoku-board\']');
+    // ? console.table(localStorage['sudoku-board']);
+  };
+
+  const reset = () => {
+    setGrid(EMPTY_GRID);
+    setStartGrid(EMPTY_START_GRID);
+    localStorage.setItem('sudoku-board', JSON.stringify(EMPTY_GRID()));
+  };
+
+  const boardExample = () => {
+    const randomGrid = GET_RANDOM_BOARD();
+    setGrid(randomGrid);
+    localStorage.setItem('sudoku-board', JSON.stringify(randomGrid));
   };
 
   return (
@@ -42,7 +57,7 @@ function Solver() {
         grid={grid}
       />
       <br />
-      <ButtonsGroup />
+      <ButtonsGroup reset={reset} boardExample={boardExample} />
     </>
   );
 }
